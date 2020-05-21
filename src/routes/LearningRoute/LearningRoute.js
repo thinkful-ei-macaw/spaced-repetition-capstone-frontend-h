@@ -4,7 +4,6 @@ import languageService from "../../services/language-api-service"
 
 class LearningRoute extends Component {
   componentDidMount() {
-    console.log("componentDidMount learn");
     languageService.getWords().then((data) => {
       this.setState(data);
     });
@@ -28,16 +27,14 @@ class LearningRoute extends Component {
 
   handleGuess = (e) => {
     e.preventDefault();
-    return languageService.guessWord(this.state.guess).then((res) => {
-      this.setState({
-        response: res,
-        answered: true,
-      });
-    });
+    console.log(e.target.value);
+    languageService.guessWord(e.target.value)
+      .then(res => {
+        console.log(res);
+      })
   };
 
   render() {
-    console.log(this.state);
 
     const {
       nextWord,
@@ -48,7 +45,6 @@ class LearningRoute extends Component {
 
     return (
       <div className="learn">
-        <Header />
         <section>
           <h2>Translate the word:</h2>
           <span>{nextWord}</span>
