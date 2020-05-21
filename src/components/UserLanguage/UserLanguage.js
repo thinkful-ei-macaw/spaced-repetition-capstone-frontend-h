@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import "./UserLanguage.css";
 
@@ -26,6 +27,9 @@ export default class UserLanguage extends React.Component {
           {words.map((word) => (
             <li key={word.id}>{word.original} </li>
           ))}
+          <Link to="/learn">
+            <button type="button">start</button>
+          </Link>
         </div>
       </div>
     );
