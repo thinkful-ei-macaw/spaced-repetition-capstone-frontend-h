@@ -23,7 +23,7 @@ class DashboardRoute extends Component {
     const words = this.state.words;
     return (
       <div className="language">
-        <div className="language-wrapper">
+        <section className="language-wrapper">
           <h2>Ready to learn {name}, amigo?</h2>
           <p>
             <span>Language:</span> {name}
@@ -32,16 +32,20 @@ class DashboardRoute extends Component {
             <span>Hi</span> {this.context.user.name}!
           </p>
           <p>
-            <span>You have a score of:</span> {total_score}
+            <span>Total correct answers:</span> {total_score}
           </p>
-          <ul>Words to learn:</ul>{" "}
-          {words.map((word) => (
-            <li key={word.id}>{word.original} </li>
-          ))}
+          <h3>Words to practice</h3>
+            {words.map((word) => (
+              <li key={word.id}>
+                <h4>
+                  {word.original} 
+                </h4>
+              </li>
+            ))}
           <Link to="/learn">
-            <button type="button">start</button>
+            <button type="button">Start practicing</button>
           </Link>
-        </div>
+        </section>
       </div>
     );
   }

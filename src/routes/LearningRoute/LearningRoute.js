@@ -6,8 +6,13 @@ class LearningRoute extends Component {
   componentDidMount() {
     languageService.getWords().then((data) => {
       this.setState(data);
+      this.setState({ changedState: true });
     });
   }
+
+  // componentDidUpdate() {
+  //   this.setState({ changedState: false })
+  // }
 
   state = {
     nextWord: "",
@@ -17,22 +22,46 @@ class LearningRoute extends Component {
     guess: "",
     answered: false,
     response: null,
+    feedback: '',
+    translation: '',
+    changeState: false,
   };
 
-  setGuess = (e) => {
+  setGuess = (event) => {
     this.setState({
-      guess: e.target.value,
+      guess: event.target.value,
     });
   };
 
-  handleGuess = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
-    languageService.guessWord(e.target.value)
+  handleGuess = (event) => {
+    event.preventDefault();
+    return languageService.guessWord(this.state.guess)
       .then(res => {
-        console.log(res);
-      })
+        this.setState({
+          response: res,
+          answered: true
+        });
+      });
   };
+
+  responseFeedback = (event) => {
+
+    event.preventDefault();
+    return languageService.guessWord(this.state.guess).then((res) => {
+      if (res.isCorrect) {
+        this.setState({
+          response: res,
+          feedback: "Correct! Great job!"
+        });
+      }
+      else {
+        this.setState({
+          response: res,
+          feedback: `Sorry, that was incorrect! The correct answer is: ${res.answer}`
+        })
+      }
+    })
+  }
 
   render() {
 
@@ -41,6 +70,7 @@ class LearningRoute extends Component {
       totalScore,
       wordCorrectCount,
       wordIncorrectCount,
+      feedback
     } = this.state;
 
     return (
@@ -49,7 +79,7 @@ class LearningRoute extends Component {
           <h2>Translate the word:</h2>
           <span>{nextWord}</span>
           <p>Your total score is: {totalScore}</p>
-          <form onSubmit={(e) => this.handleGuess(e)}>
+          <form onSubmit={((event) => this.handleGuess(event), (event) => this.responseFeedback(event))}>
             <label htmlFor="learn-guess-input" id="input">
               What's the translation for this word?
             </label>
@@ -63,9 +93,14 @@ class LearningRoute extends Component {
             <button type="submit">Submit your answer</button>
           </form>
         </section>
-
-        <main>You have answered this word correctly {wordCorrectCount} times.</main>
-        <main>You have answered this word incorrectly {wordIncorrectCount} times.</main>
+        <h4>{ feedback }</h4>
+        <button>
+          Next Word
+        </button>
+        <main className="DisplayScore">
+          <p>You have answered this word correctly {wordCorrectCount} times.</p>
+          <p>You have answered this word incorrectly {wordIncorrectCount} times.</p>
+        </main>
       </div>
     );
   }

@@ -26,17 +26,16 @@ const languageService = {
   },
 
   guessWord(guess) {
-    fetch(`${config.API_ENDPOINT}/language/guess`, {
+    return fetch(`${config.API_ENDPOINT}/language/guess`, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ guess }),
-    })
-      .then((res) => {
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
-      });    
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
   },
 };
 
