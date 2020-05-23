@@ -93,17 +93,18 @@ class LearningRoute extends Component {
           <form 
             id="spaced-rep-form"
             onSubmit={((event) => this.handleGuess(event), (event) => this.responseFeedback(event))}>
-            <label htmlFor="learn-guess-input" id="input">
-              What's the translation for this word?
-            </label>
+            <label htmlFor="learn-guess-input" id="input"/>
             <input
+              placeholder="What's the translation for this word?"
               type="text"
               id="learn-guess-input"
               name="guess-input"
               required
               onChange={this.setGuess}
             ></input>
-            <button type="submit">Submit your answer</button>
+            <button
+             className='submit-button'
+             type="submit">Submit your answer</button>
           </form>
         </section>
         <h4>{ feedback }</h4>

@@ -4,14 +4,17 @@ body{
   background-image: url('/spanish-background.jpg');
 }
 
+/* Mobile - First Styling */
+
 .App{
   background-color: rgb(115,167,136,.7);
   margin: 1em;
   padding-top: 1em;
   padding-right: 1em;
   padding-left: 1em;
-  padding-bottom: 3em;
+  padding-bottom: 1em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
@@ -44,18 +47,227 @@ button{
 /* Login Page */
 .login-heading{
   font-family: 'DM Mono', sans-serif;
+  color: #4D3B3C;
+  margin-bottom: 0;
 }
 
 .login-username-input{
   font-family: 'Raleway', sans-serif;
 }
 
+#login-username-input{
+  font-family: 'Raleway', sans-serif;
+  width: 50%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #4D3B3C;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
 .login-password-input{
   font-family: 'Raleway', sans-serif;
+}
+
+#login-password-input{
+  font-family: 'Raleway', sans-serif;
+  width: 50%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #4D3B3C;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+.login{
+  width: 65px;
+  height: 30px;
+  margin-top: .5em;
+  border: none;
+  background-color: #4D3B3C;
+  border-radius: 100%;
+  color: #E3C6AD;
+  cursor: pointer;
+  font-family: 'DM Mono', sans-serif;
 }
 
 /* Registration Page */
 .registration-form{
   display: flex;
   flex-direction: column;
+  color: #4D3B3C;
 }
+
+.registration-route{
+  color: #4D3B3C;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+}
+
+.registration-route h2{
+  margin-bottom: 0;
+}
+
+.registration-name-input{
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #4D3B3C;
+}
+
+#registration-name-input{
+  font-family: 'Raleway', sans-serif;
+  width: 50%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4D3B3C;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-top: 1em;
+}
+
+#registration-username-input{
+  font-family: 'Raleway', sans-serif;
+  width: 50%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-size: 1rem;
+  color: #4D3B3C;
+  font-weight: bold;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-top: 1em;
+}
+
+#registration-password-input{
+  font-family: 'Raleway', sans-serif;
+  width: 50%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #4D3B3C;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.registration-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up{
+  width: 75px;
+  height: 30px;
+  margin-bottom: 1em;
+  border: none;
+  background-color: #4D3B3C;
+  border-radius: 100%;
+  color: #E3C6AD;
+  cursor: pointer;
+  font-family: 'DM Mono', sans-serif;
+}
+
+/* Dashboard Page */
+.language-wrapper{
+  font-family: 'Raleway', sans-serif;
+  color: #4D3B3C
+}
+
+.dashboard-logout{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.spaced-repetition-nav-dashboard{
+  margin-right: .5em;
+}
+
+.language-wrapper h2{
+  font-family: 'Raleway', sans-serif;
+}
+
+.words{
+  list-style-type: none;
+  margin-bottom: 1em;
+}
+
+.start-button{
+  width: 150px;
+  height: 50px;
+  margin-bottom: 1em;
+  border: none;
+  background-color: #4D3B3C;
+  border-radius: 100%;
+  color: #E3C6AD;
+  cursor: pointer;
+  font-family: 'DM Mono', sans-serif;
+}
+
+/* Learn Page */
+.learn{
+  font-family: 'Raleway', sans-serif;
+  color: #4D3B3C;
+}
+
+#spaced-rep-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#learn-guess-input{
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #4D3B3C;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #4D3B3C;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.submit-button{
+  width: 200px;
+  height: 50px;
+  margin-bottom: 1em;
+  border: none;
+  background-color: #4D3B3C;
+  border-radius: 100%;
+  color: #E3C6AD;
+  cursor: pointer;
+  font-family: 'DM Mono', sans-serif;
+}
+

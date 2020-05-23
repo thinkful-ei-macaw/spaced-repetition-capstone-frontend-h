@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Input, Required, Label } from '../Form/Form'
 import AuthApiService from '../../services/auth-api-service'
 import Button from '../Button/Button'
-import './RegistrationForm.css'
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -48,39 +47,50 @@ class RegistrationForm extends Component {
           {error && <p>{error}</p>}
         </div>
         <div>
-          <Label htmlFor='registration-name-input'>
-            Enter your name<Required />
+          <Label 
+          className='registration-name-input'
+          htmlFor='registration-name-input'
+          required>
           </Label>
           <Input
             ref={this.firstInput}
+            placeholder='Enter your name here'
             id='registration-name-input'
             name='name'
             required
           />
         </div>
         <div>
-          <Label htmlFor='registration-username-input'>
-            Choose a username<Required />
+          <Label 
+          className='registration-username-input'
+          htmlFor='registration-username-input'
+          required>
           </Label>
           <Input
+            placeholder='Choose a username'
             id='registration-username-input'
             name='username'
             required
           />
         </div>
         <div>
-          <Label htmlFor='registration-password-input'>
-            Choose a password<Required />
+          <Label 
+          className='registration-password-input'
+          htmlFor='registration-password-input'
+          required>
           </Label>
           <Input
+          placeholder='Choose a password'
             id='registration-password-input'
             name='password'
             type='password'
             required
           />
         </div>
-        <footer>
-          <Button type='submit'>
+        <footer className='registration-footer'>
+          <Button 
+          className='sign-up'
+          type='submit'>
             Sign up
           </Button>
           {' '}

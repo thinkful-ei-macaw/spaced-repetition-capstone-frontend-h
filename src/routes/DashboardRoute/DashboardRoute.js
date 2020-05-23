@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./DashboardRoute.css";
 import UserContext from '../../contexts/UserContext';
 import languageService from "../../services/language-api-service";
 
@@ -24,7 +23,7 @@ class DashboardRoute extends Component {
     return (
       <div className="language">
         <section className="language-wrapper">
-          <h2>Ready to learn {name}, amigo?</h2>
+          <h2>Let's learn {name}!</h2>
           <p>
             <span>Language:</span> {name}
           </p>
@@ -36,14 +35,17 @@ class DashboardRoute extends Component {
           </p>
           <h3>Words to practice</h3>
             {words.map((word) => (
-              <li key={word.id}>
-                <h4>
+              <li 
+                className='words'
+                key={word.id}
+              >
                   {word.original} 
-                </h4>
               </li>
             ))}
           <Link to="/learn">
-            <button type="button">Start practicing</button>
+            <button 
+            className='start-button'
+            type="button">Start practicing</button>
           </Link>
         </section>
       </div>
