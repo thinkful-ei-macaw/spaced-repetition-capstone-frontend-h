@@ -43,8 +43,7 @@ class LearningRoute extends Component {
       })
       .catch((err) => {
         console.log(event);
-      });
-    
+      });   
   };
 
   responseFeedback = (event) => {
@@ -70,6 +69,7 @@ class LearningRoute extends Component {
           wordIncorrectCount: res.wordIncorrectCount
         });
       }
+
     })
   }
 
@@ -102,6 +102,9 @@ class LearningRoute extends Component {
               required
               onChange={this.setGuess}
             ></input>
+            <button className='reset-button' type="reset" id="reset" defaultValue="Reset">
+              Reset field
+            </button>
             <button
              className='submit-button'
              type="submit">Submit your answer</button>
