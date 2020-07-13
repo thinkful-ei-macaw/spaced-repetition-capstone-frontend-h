@@ -32,18 +32,41 @@ class LearningRoute extends Component {
   };
 
   handleGuess = (event) => {
+    console.log('hello')
     event.preventDefault();
+    // document.getElementById('learn-guess-input').reset();
     return languageService.guessWord(this.state.guess)
       .then(res => {
+        if (res.isCorrect){
         this.setState({
           response: res,
-          answered: true
+          answered: true,
+          feedback: `Sorry, that was incorrect! The correct answer is: ${res.answer}`,
+          totalScore: res.totalScore,
+          nextWord: res.nextWord,
+          wordCorrectCount: res.wordCorrectCount,
+          wordIncorrectCount: res.wordIncorrectCount
         });
-        event.target["spaced-rep-form"].reset();
+      }
+      else {
+        this.setState({
+          response: res,
+          feedback: `Sorry, that was incorrect! The correct answer is: ${res.answer}`,
+          totalScore: res.totalScore,
+          nextWord: res.nextWord,
+          wordCorrectCount: res.wordCorrectCount,
+          wordIncorrectCount: res.wordIncorrectCount
+        });
+      }
+        // event.target["learn-guess-input"].reset();
+        console.log(document.getElementsByClassName('word-guess'));
+        document.getElementsByClassName('word-guess').innerHTML='';
       })
       .catch((err) => {
-        console.log(event);
-      });   
+        // event.target["learn-guess-input"].reset();
+        document.getElementsByClassName('word-guess').innerHTML='';
+        console.log(document.getElementsByClassName('word-guess'));
+      }); 
   };
 
   responseFeedback = (event) => {
@@ -92,29 +115,28 @@ class LearningRoute extends Component {
           <p>Your total score is: {totalScore}</p>
           <form 
             id="spaced-rep-form"
-            onSubmit={((event) => this.handleGuess(event), (event) => this.responseFeedback(event))}>
+            onSubmit={(event) => this.handleGuess(event)}>
             <label htmlFor="learn-guess-input" id="input"/>
             <input
               placeholder="What's the translation for this word?"
               type="text"
+              className='word-guess'
               id="learn-guess-input"
               name="guess-input"
               required
               onChange={this.setGuess}
             ></input>
-            <button className='reset-button' type="reset" id="reset" defaultValue="Reset">
-              Reset field
-            </button>
             <button
              className='submit-button'
              type="submit">Submit your answer</button>
           </form>
         </section>
         <h4>{ feedback }</h4>
-        {/* <button
-          onClick = {() => this.handleNextWord()}>
+        <button
+          className='reset-button'
+          onClick = {(event) => this.responseFeedback(event)}>
           Next Word
-        </button> */}
+        </button>
         <main className="DisplayScore">
           <p>You have answered this word correctly {wordCorrectCount} times.</p>
           <p>You have answered this word incorrectly {wordIncorrectCount} times.</p>

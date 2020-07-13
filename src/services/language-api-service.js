@@ -31,6 +31,7 @@ const languageService = {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ guess }),
     }).then((res) =>
