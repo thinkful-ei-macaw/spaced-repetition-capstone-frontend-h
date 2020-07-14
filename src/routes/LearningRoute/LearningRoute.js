@@ -37,27 +37,10 @@ class LearningRoute extends Component {
     // document.getElementById('learn-guess-input').reset();
     return languageService.guessWord(this.state.guess)
       .then(res => {
-        if (res.isCorrect){
         this.setState({
           response: res,
-          answered: true,
-          feedback: `Sorry, that was incorrect! The correct answer is: ${res.answer}`,
-          totalScore: res.totalScore,
-          nextWord: res.nextWord,
-          wordCorrectCount: res.wordCorrectCount,
-          wordIncorrectCount: res.wordIncorrectCount
+          answered: true
         });
-      }
-      else {
-        this.setState({
-          response: res,
-          feedback: `Sorry, that was incorrect! The correct answer is: ${res.answer}`,
-          totalScore: res.totalScore,
-          nextWord: res.nextWord,
-          wordCorrectCount: res.wordCorrectCount,
-          wordIncorrectCount: res.wordIncorrectCount
-        });
-      }
         // event.target["learn-guess-input"].reset();
         console.log(document.getElementsByClassName('word-guess'));
         document.getElementsByClassName('word-guess').innerHTML='';
@@ -92,7 +75,7 @@ class LearningRoute extends Component {
           wordIncorrectCount: res.wordIncorrectCount
         });
       }
-
+      document.getElementById('spaced-rep-form').reset();
     })
   }
 
@@ -126,9 +109,12 @@ class LearningRoute extends Component {
               required
               onChange={this.setGuess}
             ></input>
-            <button
+            {/* <button className='reset-button' type="reset" id="reset" defaultValue="Reset">
+              Reset field
+            </button> */}
+            {/* <button
              className='submit-button'
-             type="submit">Submit your answer</button>
+             type="submit">Submit your answer</button> */}
           </form>
         </section>
         <h4>{ feedback }</h4>
